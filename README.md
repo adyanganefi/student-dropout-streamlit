@@ -99,6 +99,12 @@ Prediksi dapat dilakukan melalui **aplikasi Streamlit interaktif** pada file `pr
    - Enrolled
    - Graduate
 
+### Menjalankan Aplikasi di Cloud
+
+Aplikasi prediksi ini juga telah dideploy ke **Streamlit Community Cloud** dan dapat diakses secara online melalui link berikut:
+
+👉 [Akses Prototype di Streamlit Cloud](https://student-dropout-app-8te672oahjewzmv2mbrvjq.streamlit.app/)
+
 ---
 
 ## Conclusion
