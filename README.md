@@ -99,41 +99,56 @@ Prediksi dapat dilakukan melalui **aplikasi Streamlit interaktif** pada file `pr
    - Enrolled
    - Graduate
 
-Model ini dapat dikembangkan lebih lanjut menjadi API atau diintegrasikan ke dalam sistem informasi akademik.
-
 ---
 
 ## Conclusion
 
-Berdasarkan hasil eksplorasi, pemodelan, dan evaluasi terhadap dataset mahasiswa Jaya Jaya Institut, diperoleh beberapa kesimpulan utama sebagai berikut:
+Berdasarkan proses eksplorasi, pemodelan, dan evaluasi terhadap dataset mahasiswa **Jaya Jaya Institut**, diperoleh beberapa kesimpulan utama sebagai berikut:
 
 1. **Model yang digunakan**  
-   Algoritma **Random Forest Classifier** dipilih karena mampu menangani klasifikasi multikelas, robust terhadap outlier, dan memberikan interpretasi melalui feature importance.
+   Algoritma **Random Forest Classifier** dipilih karena kemampuannya menangani klasifikasi multikelas, ketahanannya terhadap outlier, serta memberikan interpretabilitas melalui *feature importance*.
 
 2. **Performa model**  
-   Model menunjukkan **akurasi sebesar 76.38%** pada data uji, dengan performa terbaik dalam memprediksi mahasiswa yang **Graduate**, namun masih kurang dalam membedakan kelas **Enrolled**.
+   Model mencapai **akurasi sebesar 76.38%** pada data uji. Ia memberikan performa prediksi terbaik untuk kelas **Graduate**, cukup baik untuk **Dropout**, namun masih kurang dalam membedakan kelas **Enrolled**, kemungkinan karena distribusi data yang tidak seimbang.
 
-3. **Distribusi kelas**  
+3. **Distribusi kelas target**  
    - Graduate: 50%  
    - Dropout: 32%  
    - Enrolled: 18%  
-   ➤ Distribusi ini cukup timpang, yang mungkin memengaruhi kinerja prediksi terutama pada kelas Enrolled yang minoritas.
+   ➤ Ketidakseimbangan ini dapat menyebabkan bias prediksi terhadap kelas mayoritas (Graduate), dan kesulitan dalam klasifikasi kelas minoritas (Enrolled).
 
-4. **Fitur yang paling berpengaruh**  
-   Berdasarkan *feature importance*, tiga fitur paling menentukan status akhir mahasiswa adalah:
-   - `Curricular_units_2nd_sem_approved`
-   - `Curricular_units_2nd_sem_grade`
+4. **Fitur yang paling berpengaruh terhadap prediksi status akhir mahasiswa**:  
+   - `Curricular_units_2nd_sem_approved`  
+   - `Curricular_units_2nd_sem_grade`  
    - `Curricular_units_1st_sem_approved`  
-   ➤ Ini menekankan pentingnya performa akademik sejak awal perkuliahan sebagai indikator risiko dropout.
+   ➤ Ini menunjukkan bahwa **performa akademik pada semester awal** sangat menentukan keberhasilan studi mahasiswa. Mahasiswa dengan jumlah mata kuliah yang tidak lulus banyak dan nilai yang rendah di semester awal cenderung memiliki risiko lebih tinggi untuk dropout.
+
+5. **Karakteristik umum mahasiswa yang dropout**:  
+   - Rata-rata **nilai semester rendah**, baik dari segi jumlah mata kuliah yang tidak lulus maupun nilai keseluruhan.  
+   - Banyak dari mereka juga **tidak memperoleh beasiswa** dan **memiliki keterlambatan pembayaran UKT**.  
+   - **Marital status** dan usia juga berpengaruh, di mana mahasiswa yang sudah menikah atau berusia lebih tua cenderung lebih berisiko mengalami dropout karena mungkin menghadapi beban tanggung jawab keluarga atau pekerjaan.
 
 ---
 
-### Rekomendasi Action Items
+### Rekomendasi Actionable Items
 
-Berikut adalah beberapa rekomendasi strategis bagi Jaya Jaya Institut:
+Berdasarkan temuan tersebut, berikut adalah rekomendasi yang lebih teknis dan actionable untuk pihak akademik Jaya Jaya Institut:
 
-- **Bangun sistem peringatan dini (early warning system)** berdasarkan model ini, untuk mengidentifikasi mahasiswa yang berisiko dropout sejak semester awal.
-- **Lakukan balancing data atau oversampling** pada kelas minoritas (Enrolled) untuk meningkatkan akurasi model secara menyeluruh.
-- **Evaluasi dan uji model alternatif** seperti XGBoost atau Gradient Boosting untuk membandingkan performa prediksi.
-- **Kembangkan dashboard interaktif** berbasis Streamlit atau BI tools agar dosen wali dan manajemen dapat menggunakan model ini secara real time.
-- **Berikan dukungan akademik atau mentoring** secara khusus kepada mahasiswa dengan risiko tinggi menurut model prediksi.
+1. **Sistem Early Warning**  
+   - Terapkan *early warning system* berbasis model prediksi ini untuk mendeteksi mahasiswa dengan performa rendah sejak semester pertama dan kedua.  
+   - Sistem ini bisa diintegrasikan dalam sistem informasi akademik kampus.
+
+2. **Dukungan Akademik Spesifik**  
+   - Mahasiswa dengan jumlah mata kuliah yang tidak lulus banyak di semester awal dapat diberikan *remedial class* atau *mentoring akademik*.  
+   - Libatkan dosen wali untuk mengawasi perkembangan nilai mereka.
+
+3. **Pendekatan Finansial dan Sosial**  
+   - Bagi mahasiswa yang terlambat membayar UKT atau tidak mendapat beasiswa, perlu dibuat skema keringanan pembayaran, cicilan UKT, atau informasi lebih terbuka mengenai beasiswa.  
+   - Mahasiswa menikah dapat difasilitasi fleksibilitas jam belajar atau pendampingan psikologis agar tetap dapat mengikuti perkuliahan dengan baik.
+
+4. **Model Iteratif dan Berbasis Data Terbaru**  
+   - Update model secara berkala menggunakan data akademik terbaru agar sistem tetap relevan dan akurat.  
+   - Lakukan eksplorasi dengan model alternatif seperti XGBoost untuk kemungkinan peningkatan performa prediksi.
+
+5. **Visualisasi Interaktif**  
+   - Dashboard berbasis **Streamlit** telah dikembangkan dan dapat digunakan dosen untuk memantau status mahasiswa. Ke depan bisa dikembangkan lebih lanjut menjadi sistem prediktif berbasis web kampus.

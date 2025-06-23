@@ -59,10 +59,13 @@ with colC:
     st.pyplot(fig3)
 
 with colD:
+    avg_admission = df_filtered.groupby("Status")["Admission_grade"].mean().reset_index()
     fig4, ax4 = plt.subplots(figsize=(5, 4))
-    sns.boxplot(data=df_filtered, x='Status', y='Admission_grade', palette='Set3', ax=ax4)
-    ax4.set_title("Distribusi Nilai Masuk")
+    sns.barplot(data=avg_admission, x='Status', y='Admission_grade', palette='Set3', ax=ax4)
+    ax4.set_ylabel("Rata-rata Nilai Masuk")
+    ax4.set_title("Rata-rata Nilai Masuk per Status")
     st.pyplot(fig4)
+
 
 # Footer
 st.markdown("---")
